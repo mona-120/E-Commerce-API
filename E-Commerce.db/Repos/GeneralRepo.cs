@@ -20,7 +20,7 @@ namespace E_Commerce.db.Repos
         {
             var entity = await appDb.Set<T>().FindAsync(id);
             if (entity == null)
-                throw new NotFoundEx($"Item {id} Not Found");
+                throw new NotFoundException($"Item {id} Not Found");
 
             appDb.Set<T>().Remove(entity);
             return await appDb.SaveChangesAsync();
@@ -31,11 +31,11 @@ namespace E_Commerce.db.Repos
             return await appDb.Set<T>().AsNoTracking().ToListAsync();
         }
 
-        public async Task<T>? GetByIdAsync(Guid id)
+        public async Task<T> GetByIdAsync(Guid id)
         {
             var item = await appDb.Set<T>().FindAsync(id);
             if (item == null)
-                throw new NotFoundEx($"Item {id} not found");
+                throw new NotFoundException($"Item {id} not found");
             return item;
         }
 

@@ -12,4 +12,9 @@ namespace E_Commerce.lib.DTOs
     {
         public Guid CategoryId { get; set; }
     }
+    public class GetCategoryDto : CategoryDto
+    {
+        public Guid CategoryId { get; set; }
+        public ICollection<GetProductDto>? Products { get; set; }
+    }
 }

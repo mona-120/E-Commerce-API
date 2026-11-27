@@ -4,7 +4,7 @@ using System.Text;
 
 namespace E_Commerce.lib.Exceptions
 {
-    public class NotFoundEx(string message) : Exception(message)
+    public class NotFoundException(string message) : Exception(message)
     {
 
     }
