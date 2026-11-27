@@ -7,11 +7,16 @@ namespace E_Commerce.lib.DTOs
 {
     public class ProductDto
     {
+        [Required]
         public string? Name { get; set; }
         [MaxLength(200, ErrorMessage = "Max Description is 200 char")]
+        [Required]
         public string? Description { get; set; }
+        [Required]
+        [DataType(DataType.Currency)]
         public decimal? Price { get; set; }
         public string? ProductImage { get; set; }
+        [Required]
         public Guid CategoryId { get; set; }
     }
 

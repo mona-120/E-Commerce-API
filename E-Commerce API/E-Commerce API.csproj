@@ -13,10 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\E-Commerce.db\E-Commerce.db.csproj" />
     <ProjectReference Include="..\E-Commerce.lib\E-Commerce.lib.csproj" />
   </ItemGroup>
