@@ -72,7 +72,7 @@ namespace E_Commerce_API.Services
         {
             try
             {
-                var category = await category_.GetByIdAsync(newCategory.CategoryId);
+                var category = await category_.GetByIdAsync(newCategory.Id);
                 mapper.Map(newCategory, category);
                 var result = await category_.UpdateAsync(category);
                 if (result > 0)

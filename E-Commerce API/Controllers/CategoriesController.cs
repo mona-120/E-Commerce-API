@@ -20,7 +20,7 @@ namespace E_Commerce_API.Controllers
         public async Task<IActionResult> GetCategory(Guid id)
         {
             var result = await categoryService.GetByIdAsync(id);
-            return result != null && result.CategoryId != Guid.Empty? Ok(result) : NotFound();
+            return result != null && result.Id != Guid.Empty? Ok(result) : NotFound();
         }
 
         [HttpPost("add")]

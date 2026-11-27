@@ -20,7 +20,7 @@ namespace E_Commerce_API.Controllers
         public async Task<IActionResult> GetProduct(Guid id)
         {
             var result = await productService.GetByIdAsync(id);
-            return result != null && result.ProductId != Guid.Empty? Ok(result) : NotFound(id);
+            return result != null && result.Id != Guid.Empty? Ok(result) : NotFound(id);
         }
 
         [HttpPost("add")]

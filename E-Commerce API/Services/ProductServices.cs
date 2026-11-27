@@ -78,7 +78,7 @@ namespace E_Commerce_API.Services
         {
             try
             {
-                var product = await product_.GetByIdAsync(updateProductDto.ProductId);
+                var product = await product_.GetByIdAsync(updateProductDto.Id);
 
                 mapper.Map(updateProductDto,product);
 

@@ -15,6 +15,8 @@ namespace E_Commerce.lib.DTOs
         [Required]
         [DataType(DataType.Currency)]
         public decimal Price { get; set; }
+        [Required]
+        public int Quantity { get; set; }
         public string? ProductImage { get; set; }
         [Required]
         public Guid CategoryId { get; set; }
@@ -22,11 +24,11 @@ namespace E_Commerce.lib.DTOs
 
     public class UpdateProductDto : ProductDto
     {
-        public Guid ProductId { get; set; }
+        public Guid Id { get; set; }
     }
     public class GetProductDto : ProductDto
     {
-        public Guid ProductId { get; set; }
+        public Guid Id { get; set; }
         //Don't use GetCategoryDto to avoid Circular Refrence Problem
         public string? CategoryName { get; set; }
     }
