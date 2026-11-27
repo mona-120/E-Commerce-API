@@ -3,6 +3,7 @@ using E_Commerce.db.Base;
 using E_Commerce.db.Entities;
 using E_Commerce.lib.Base;
 using E_Commerce.lib.DTOs;
+using E_Commerce.lib.Exceptions;
 namespace E_Commerce_API.Services
 {
     public class ProductServices(IGeneralRepo<Product> product_, IMapper mapper) : IProductService
@@ -63,8 +64,7 @@ namespace E_Commerce_API.Services
             try
             {
                 var product = await product_.GetByIdAsync(id);
-                if (product == null)
-                    return new GetProductDto();
+
                 var productDto = mapper.Map<GetProductDto>(product);
                 return productDto;
             }
@@ -85,10 +85,16 @@ namespace E_Commerce_API.Services
                 int result = await product_.UpdateAsync(product);
                 if (result > 0)
                     return new ResponseDto(true, "Product Updated Successfully!");
-            }catch(Exception ex)
+            }
+            catch (NotFoundException ex)
             {
                 return new ResponseDto(false, ex.Message);
             }
+            catch (Exception ex)
+            {
+                return new ResponseDto(false, ex.Message);
+            }
+            
             return new ResponseDto(false, "Server Can't update!");
         }
     }
