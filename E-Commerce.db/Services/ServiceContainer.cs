@@ -1,4 +1,7 @@
-﻿using E_Commerce.db.Context;
+﻿using E_Commerce.db.Base;
+using E_Commerce.db.Context;
+using E_Commerce.db.Entities;
+using E_Commerce.db.Repos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,7 +13,7 @@ namespace E_Commerce.db.Services
 {
     public static class ServiceContainer
     {
-        public static IServiceCollection AddInjectionOptions(this  IServiceCollection services,IConfiguration config)
+        public static IServiceCollection AddInjectionOptionsDb(this  IServiceCollection services,IConfiguration config)
         {
             string constr = "constr";
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(config.GetConnectionString(constr),
@@ -22,6 +25,8 @@ namespace E_Commerce.db.Services
                       ),
                        ServiceLifetime.Scoped
                       );
+            services.AddScoped<IGeneralRepo<Product>, GeneralRepo<Product>>();
+            services.AddScoped<IGeneralRepo<Category>, GeneralRepo<Category>>();
             return services;
         }
     }

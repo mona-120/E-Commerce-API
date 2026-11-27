@@ -1,3 +1,5 @@
+using E_Commerce.db.Services;
+using E_Commerce_API.Classes;
 
 namespace E_Commerce_API
 {
@@ -13,7 +15,12 @@ namespace E_Commerce_API
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
 
+            // Add Injection options
+            builder.Services.AddInjectionOptionsApi();
+            builder.Services.AddInjectionOptionsDb(builder.Configuration);
+
             var app = builder.Build();
+
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

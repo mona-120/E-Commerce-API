@@ -14,7 +14,7 @@ namespace E_Commerce.lib.DTOs
         public string? Description { get; set; }
         [Required]
         [DataType(DataType.Currency)]
-        public decimal? Price { get; set; }
+        public decimal Price { get; set; }
         public string? ProductImage { get; set; }
         [Required]
         public Guid CategoryId { get; set; }

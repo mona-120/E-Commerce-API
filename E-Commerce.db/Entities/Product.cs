@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -16,10 +17,13 @@ namespace E_Commerce.db.Entities
         [MaxLength(200,ErrorMessage = "Max Description is 200 char")]
         public string? Description { get; set; }
         [Column(TypeName ="decimal(16,4)")]
+        [Required]
         public decimal? Price { get; set; }
         public string? ProductImage { get; set; }
+        [Required]
         public int? Quantity { get; set; }
         [ForeignKey("CategoryId")]
+        [DeleteBehavior(DeleteBehavior.Restrict)]
         public Category? Category { get; set; }
         public Guid CategoryId { get; set; }
     }

@@ -5,9 +5,9 @@ namespace E_Commerce_API.Classes
 {
     public static class ServiceContainer
     {
-        public static IServiceCollection AddInjectionOptions(this IServiceCollection services)
+        public static IServiceCollection AddInjectionOptionsApi(this IServiceCollection services)
         {
-            services.AddAutoMapper(typeof(MappingConfig));
+            services.AddAutoMapper(cfg => cfg.AddProfile<MappingConfig>());
             services.AddScoped<IProductService, ProductServices>();
             services.AddScoped<ICategoryService, CategoryServices>();
             return services;
